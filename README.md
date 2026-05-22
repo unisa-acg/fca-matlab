@@ -27,7 +27,19 @@ Custom subsytems models are defined in [`simulink/models`](./simulink/models/), 
 
 ### Operating systems
 
-The exercises are tested under Matlab R2022a, R2023a and R2024a, in Ubuntu 18.04 and 20.04, and Windows 10.
+The exercises are tested under the following versions of Matlab:
+
+- R2022a
+- R2023a
+- R2024a
+- R2026a
+
+and the following operating systems:
+
+- Ubuntu 18.04
+- Ubuntu 20.04
+- Ubuntu 22.04
+- Windows 10.
 
 The code has been tested on MATLAB online too.
 
