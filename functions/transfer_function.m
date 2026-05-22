@@ -8,4 +8,3 @@ syms s
 I = eye(size(A));
 G(s) = C / (s*I - A) * B + D;
 end
-
