@@ -8,7 +8,7 @@ yd = kd * out.r;
 d = out.d;
 
 % Create figure to plot data
-figure(Name="Output", WindowState="maximized")
+figure()
 
 % If the disturbance exists, plot it
 if any(out.d.Data ~= 0)

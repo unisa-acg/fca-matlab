@@ -2,7 +2,7 @@
 FS = 15;  % FontSize
 
 % Create a figure
-figure(Name="Output")
+figure()
 sgtitle("System Response");
 colorOrder = get(gca, 'ColorOrder');
 
