@@ -6,7 +6,7 @@ FS = 20;
 LW = 2;
 
 % Create a new figure
-figure(WindowState="maximized");
+figure();
 
 % Plot y
 plot(out.y, DisplayName='y')

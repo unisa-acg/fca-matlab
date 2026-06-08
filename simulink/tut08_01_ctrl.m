@@ -26,12 +26,13 @@ G0 = C0 * P;
 F0 = G0 * H;
 
 % Plot
-figure(Name="C0", WindowState="minimized");
+f0_handle = figure();
 margin(F0);
 grid on;
+legend("$F_0(j\omega)$", Interpreter="latex");
 
 % Set legends
-axs = findall(gcf, Type="Axes");
+axs = findall(f0_handle, Type="Axes");
 txt = "$F_0(j\omega)$";
 for ii = 1 : length(axs)
     lines = findall(axs(ii), Type="Line");
@@ -51,9 +52,10 @@ G1 = C1 * P;
 F1 = G1 * H;
 
 % Plot
-figure(Name="C1", WindowState="minimized");
+figure();
 margin(F1);
 grid on;
+legend("$F_1(j\omega)$", Interpreter="latex");
 
 % Set legends
 axs = findall(gcf, Type="Axes");
@@ -77,9 +79,10 @@ F2 = G2 * H;
 W2 = feedback(G2, H);
 
 % Plot
-figure(Name="C2", WindowState="minimized");
+figure();
 margin(F2);
 grid on;
+legend("$F_2(j\omega)$", Interpreter="latex");
 
 % Set legends
 axs = findall(gcf, Type="Axes");
@@ -104,9 +107,10 @@ W3 = feedback(G3, H);
 W3H = W3 * H;
 
 % Plot F3
-figure(Name="C3", WindowState="minimized");
+figure();
 margin(F3);
 grid on;
+legend("$F_3(j\omega)$", Interpreter="latex");
 
 % Set legends
 axs = findall(gcf, Type="Axes");
@@ -120,23 +124,21 @@ for ii = 1 : length(axs)
 end
 
 % Plot W3
-figure(Name="W3", WindowState="minimized");
+handle = figure();
 bode(W3H);
 grid on;
-handle = gcf();
+legend("$W_3^{'}(j\omega)$", Interpreter="latex");
 
 % Plot vertical lines at desired frequencies
+% If it does not work on MATLAB online, execute this block again
 w = [0.03, 0.1, 1];
 axs = findall(handle, Type="Axes");
-for ii = 1 : length(axs)
-    lines = findall(axs(ii), Type="Line");
-    legend(axs(ii), lines(1), "$W_3^{'}$", Interpreter="latex");
-    colorOrder = get(axs(ii), "ColorOrder");
-    for jj = 1 : length(w)
-        ww = w(jj);
-        color = colorOrder(jj + 1, :);
-        xline(axs(ii), ww, '--', DisplayName=['$\omega = ' num2str(ww) '$'], Color=color, LineWidth=1.5);
-    end
+for jj = 1 : length(w)
+    ww = w(jj);
+    colorOrder = colororder;
+    color = colorOrder(jj + 1, :);
+    xline(axs(1), ww, '--', DisplayName=['$\omega = ' num2str(ww) '$'], Color=color, LineWidth=1.5);
+    xline(axs(2), ww, '--', Color=color, LineWidth=1.5, HandleVisibility='off');
 end
 
 %% Plot style
